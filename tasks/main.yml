@@ -27,6 +27,12 @@
     - docker_base_packages
     - docker_packages
 
+- name: Install pip
+  apt:
+    name: python-pip
+    state: 'present'
+    install_recommends: False
+
 - name: Install ferment generator
   pip:
     name: 'ferment'
