@@ -41,7 +41,7 @@
 {%   endfor %}
 {% endif %}
 {% if docker__registry_mirrors|d() %}
-{%   for registry_mirror in docker__insecure_registries %}
+{%   for registry_mirror in docker__registry_mirrors %}
 {%     if registry_mirror %}
 {%       set _ = docker__tpl_options.append("--registry-mirror" + " " + registry_mirror) %}
 {%     endif %}
