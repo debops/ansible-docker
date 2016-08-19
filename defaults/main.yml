@@ -181,12 +181,6 @@ docker__options: []
 docker__registry_mirrors: []
                                                                    # ]]]
                                                                    # ]]]
-# .. envvar:: docker__insecure_registries [[[
-#
-# List of insecure registries.
-docker__insecure_registries: []
-                                                                   # ]]]
-                                                                   # ]]]
 # PKI and certificates [[[
 # ------------------------
 
