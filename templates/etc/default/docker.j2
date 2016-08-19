@@ -40,6 +40,13 @@
 {%     set _ = docker__tpl_options.append("--label " + key + '="' + value + '"') %}
 {%   endfor %}
 {% endif %}
+{% if docker__registry_mirrors|d() %}
+{%   for registry_mirror in docker__registry_mirrors %}
+{%     if registry_mirror %}
+{%       set _ = docker__tpl_options.append("--registry-mirror" + " " + registry_mirror) %}
+{%     endif %}
+{%   endfor %}
+{% endif %}
 {% if docker__options|d() %}
 {%   for option in docker__options %}
 {%     if option %}

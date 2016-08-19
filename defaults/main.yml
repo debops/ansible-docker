@@ -175,6 +175,12 @@ docker__labels: {}
 docker__options: []
                                                                    # ]]]
                                                                    # ]]]
+# .. envvar:: docker__registry_mirrors [[[
+#
+# List of registry mirrors.
+docker__registry_mirrors: []
+                                                                   # ]]]
+                                                                   # ]]]
 # PKI and certificates [[[
 # ------------------------
 
