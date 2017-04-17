@@ -44,6 +44,12 @@
     - '{{ docker__base_packages }}'
     - '{{ docker__packages }}'
 
+- name: Install pip
+  apt:
+    name: python-pip
+    state: 'present'
+    install_recommends: False
+
 - name: Install ferment generator
   pip:
     name: '{{ docker__ferment_pip_package }}'
