@@ -38,6 +38,8 @@ docker__distribution_release: '{{ ansible_local.core.distribution_release
 # work. You may need to manually remove the upstream version and configuration.
 docker__upstream: False
 
+docker__version: ''
+
                                                                    # ]]]
 # .. envvar:: docker__upstream_key [[[
 #

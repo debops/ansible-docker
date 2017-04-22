@@ -40,7 +40,7 @@
     state: 'present'
     install_recommends: False
   with_flattened:
-    - '{{ "docker-engine" if docker__upstream|d() else "docker.io" }}'
+    - '{{ ("docker-engine" if docker__upstream|d() else "docker.io") ~ (("=" ~ docker__version) if docker__version|d() else "") }}'
     - '{{ docker__base_packages }}'
     - '{{ docker__packages }}'
 
