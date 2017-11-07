@@ -66,6 +66,11 @@ Ansible inventory to customize Docker:
 :envvar:`docker__admins`
   List of UNIX accounts that have access to Docker daemon socket.
 
+:envvar:`docker__users_accounts`
+  List of `Docker login`_ to manage on all hosts in Ansible inventory.
+
+.. _Docker login:  http://docs.ansible.com/ansible/latest/docker_login_module.html
+
 Example inventory
 -----------------
 

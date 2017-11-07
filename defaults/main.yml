@@ -112,6 +112,7 @@ docker__base_packages:
   - '{{ [ "virtualenv" ] if (ansible_distribution_release not in ["trusty", "wheezy"]) else [] }}'
   - "bridge-utils"
   - '{{ [ "cgroup-lite" ] if (ansible_distribution_release in ["trusty"]) else [] }}'
+  - "python-docker"
 
                                                                    # ]]]
 # .. envvar:: docker__packages [[[
@@ -189,6 +190,32 @@ docker__admins: '{{ ansible_local.core.admin_users
                     if (ansible_local|d() and ansible_local.core|d() and
                         ansible_local.core.admin_users|d())
                     else [] }}'
+                                                                   # ]]]
+                                                                   # ]]]
+# Docker login [[[
+# -------------------------
+
+# .. envvar:: docker__users_accounts [[[
+#
+# List of docker login to manage on all hosts in Ansible inventory.
+docker__users_accounts: []
+                                                                   # ]]]
+# .. envvar:: docker__users_group_accounts [[[
+#
+# List of docker login to manage on hosts in Ansible inventory group.
+docker__users_group_accounts: []
+                                                                   # ]]]
+# .. envvar:: docker__users_host_accounts [[[
+#
+# List of docker login to manage on specific hosts in Ansible inventory.
+docker__users_host_accounts: []
+                                                                   # ]]]
+# .. envvar:: docker__users_dependent_accounts [[[
+#
+# List of docker login to manage on the current playbook host. This variable
+# is meant to be used from a role dependency in :file:`role/meta/main.yml` or
+# in a playbook.
+docker__users_dependent_accounts: []
                                                                    # ]]]
                                                                    # ]]]
 # Network configuration [[[

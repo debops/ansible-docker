@@ -14,7 +14,7 @@ isolated application environments.
 
 ### Installation
 
-This role requires at least Ansible `v1.9.0`. To install it, run:
+This role requires at least Ansible `v2.0.0`. To install it, run:
 
 ```Shell
 ansible-galaxy install debops.docker

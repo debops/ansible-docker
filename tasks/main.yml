@@ -126,6 +126,7 @@
   register: docker__register_version
   changed_when: False
   failed_when: False
+  always_run: yes
   tags: [ 'role::docker:config' ]
 
 - name: Configure Docker options
@@ -216,3 +217,31 @@
 - name: Update Ansible facts if they were modified
   action: setup
   when: docker__register_facts|changed
+
+- name: Manage docker login accounts
+  docker_login:
+    api_version:    '{{ item.api_version    | d(omit) }}'
+    cacert_path:    '{{ item.cacert_path    | d(omit) }}'
+    cert_path:      '{{ item.cert_path      | d(omit) }}'
+    config_path:    '{{ item.config_path    | d(omit) }}'
+    docker_host:    '{{ item.docker_host    | d(omit) }}'
+    email:          '{{ item.email          | d(omit) }}'
+    key_path:       '{{ item.key_path       | d(omit) }}'
+    password:       '{{ item.password }}'
+    reauthorize:    '{{ item.reauthorize    | d(omit) }}'
+    registry_url:   '{{ item.registry_url   | d(omit) }}'
+    ssl_version:    '{{ item.ssl_version    | d(omit) }}'
+    state:          '{{ item.state          | d("present") }}'
+    timeout:        '{{ item.timeout        | d(omit) }}'
+    tls:            '{{ item.tls            | d(omit) }}'
+    tls_hostname:   '{{ item.tls_hostname   | d(omit) }}'
+    tls_verify:     '{{ item.tls_verify     | d(omit) }}'
+    username:       '{{ item.username }}'
+  with_flattened:
+    - '{{ docker__users_accounts }}'
+    - '{{ docker__users_group_accounts }}'
+    - '{{ docker__users_host_accounts }}'
+    - '{{ docker__users_dependent_accounts }}'
+  when: (item.username|d() and item.password|d())
+  no_log: True
+
